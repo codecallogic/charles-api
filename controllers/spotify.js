@@ -34,7 +34,7 @@ exports.requestToken = async (req, res) => {
 
 exports.search = async (req, res) => {
   try {
-    const response = await axios.get(`https://api.spotify.com/v1/search?q=${req.body.search}&type=${req.body.type}&include_external=audio`, {
+    const response = await axios.get(`https://api.spotify.com/v1/search?q=${req.body.search}&type=${req.body.type}&include_external=audio&offset=0&limit=50`, {
       headers: {
         Authorization: `Bearer ${req.body.token}`,
         ContentType: 'application/json'
