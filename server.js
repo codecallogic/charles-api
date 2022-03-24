@@ -10,8 +10,10 @@ app.use(cors({credentials: true, origin: process.env.CLIENT_URL}))
 app.use(express.json())
 
 const spotifyRoutes = require('./routes/spotify')
+const testRoutes = require('./routes/test')
 
 app.use('/api/spotify', spotifyRoutes)
+app.use('/api/test', testRoutes)
 
 const port = process.env.PORT || 3001
 
