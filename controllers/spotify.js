@@ -34,7 +34,7 @@ exports.requestToken = async (req, res) => {
 
 exports.search = async (req, res) => {
   try {
-    const response = await axios.get(`https://api.spotify.com/v1/search?q=${req.body.search}&type=${req.body.type}&include_external=audio&offset=0&limit=50`, {
+    const response = await axios.get(`https://api.spotify.com/v1/search?q=${req.body.search}&type=${req.body.type}&include_external=audio&offset=0&limit=10`, {
       headers: {
         Authorization: `Bearer ${req.body.token}`,
         ContentType: 'application/json'
@@ -46,5 +46,20 @@ exports.search = async (req, res) => {
   } catch (error) {
     console.log(error)
     return res.json(error.response.data)
+  }
+}
+
+exports.playlist = async (req, res) => {
+  try {
+    const response = await axios.get(`https://api.spotify.com/v1/playlists/${req.body.id}`, { 
+      headers: {
+        Authorization: `Bearer ${req.body.token}`,
+        ContentType: 'application/json'
+      }
+    })
+    res.json(response.data)
+  } catch (error) {
+    console.log(error)
+    res.status(403).json('Error getting playlist data')
   }
 }
