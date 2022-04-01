@@ -63,3 +63,18 @@ exports.playlist = async (req, res) => {
     res.status(403).json('Error getting playlist data')
   }
 }
+
+exports.getCurrentUser = async (req, res) => {
+  try {
+    const response = await axios.get(`https://api.spotify.com/v1/users/12127262811`, {
+      headers: {
+        Authorization: `Bearer ${req.body.token}`,
+        ContentType: 'application/json'
+      }
+    })
+    res.json(response.data)
+  } catch (error) {
+    console.log(error)
+    res.status(403).json('Error getting current user')
+  }
+}
