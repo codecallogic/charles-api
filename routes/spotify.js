@@ -6,6 +6,5 @@ const { requestToken, search, playlist, getCurrentUser } = require('../controlle
 router.post('/token', requestToken)
 router.post('/search', search)
 router.post('/playlist', playlist)
-router.post('/user', getCurrentUser)
 
 module.exports  = router
