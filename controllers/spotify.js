@@ -44,7 +44,7 @@ exports.search = async (req, res) => {
     return res.json(response.data)
     
   } catch (error) {
-    console.log(error)
+    console.log('ERROR DATA', error.response.data)
     return res.json(error.response.data)
   }
 }
@@ -59,7 +59,7 @@ exports.playlist = async (req, res) => {
     })
     res.json(response.data)
   } catch (error) {
-    console.log(error)
+    console.log(error.data)
     res.status(403).json('Error getting playlist data')
   }
 }
